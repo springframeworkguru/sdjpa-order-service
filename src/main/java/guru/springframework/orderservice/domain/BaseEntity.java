@@ -1,6 +1,7 @@
 package guru.springframework.orderservice.domain;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.context.annotation.ComponentScan;
 
 import javax.persistence.*;
@@ -19,6 +20,9 @@ public abstract class BaseEntity {
     @Column(updatable = false)
     private Timestamp createdDate;
 
+    @UpdateTimestamp
+    private Timestamp lastModifiedDate;
+
     public Long getId() {
         return id;
     }
@@ -35,6 +39,14 @@ public abstract class BaseEntity {
         this.createdDate = createdDate;
     }
 
+    public Timestamp getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Timestamp lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,13 +55,16 @@ public abstract class BaseEntity {
         BaseEntity that = (BaseEntity) o;
 
         if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
-        return getCreatedDate() != null ? getCreatedDate().equals(that.getCreatedDate()) : that.getCreatedDate() == null;
+        if (getCreatedDate() != null ? !getCreatedDate().equals(that.getCreatedDate()) : that.getCreatedDate() != null)
+            return false;
+        return getLastModifiedDate() != null ? getLastModifiedDate().equals(that.getLastModifiedDate()) : that.getLastModifiedDate() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getCreatedDate() != null ? getCreatedDate().hashCode() : 0);
+        result = 31 * result + (getLastModifiedDate() != null ? getLastModifiedDate().hashCode() : 0);
         return result;
     }
 }
