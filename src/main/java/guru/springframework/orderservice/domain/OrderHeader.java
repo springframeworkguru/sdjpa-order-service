@@ -1,17 +1,50 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jt on 12/5/21.
  */
 @Entity
+@AttributeOverrides({
+        @AttributeOverride(
+                name = "shippingAddress.address",
+                column = @Column(name = "shipping_address")
+        ),
+        @AttributeOverride(
+                name = "shippingAddress.city",
+                column = @Column(name = "shipping_city")
+        ),
+        @AttributeOverride(
+                name = "shippingAddress.state",
+                column = @Column(name = "shipping_state")
+        ),
+        @AttributeOverride(
+                name = "shippingAddress.zipCode",
+                column = @Column(name = "shipping_zip_code")
+        ),
+        @AttributeOverride(
+                name = "billToAddress.address",
+                column = @Column(name = "bill_to_address")
+        ),
+        @AttributeOverride(
+                name = "billToAddress.city",
+                column = @Column(name = "bill_to_city")
+        ),
+        @AttributeOverride(
+                name = "billToAddress.state",
+                column = @Column(name = "bill_to_state")
+        ),
+        @AttributeOverride(
+                name = "billToAddress.zipCode",
+                column = @Column(name = "bill_to_zip_code")
+        )
+})
 public class OrderHeader extends BaseEntity{
 
     private String customer;
+    private Address shippingAddress;
+    private Address billToAddress;
 
     public String getCustomer() {
         return customer;
@@ -19,6 +52,22 @@ public class OrderHeader extends BaseEntity{
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public Address getBillToAddress() {
+        return billToAddress;
+    }
+
+    public void setBillToAddress(Address billToAddress) {
+        this.billToAddress = billToAddress;
     }
 
     @Override
@@ -29,13 +78,19 @@ public class OrderHeader extends BaseEntity{
 
         OrderHeader that = (OrderHeader) o;
 
-        return getCustomer() != null ? getCustomer().equals(that.getCustomer()) : that.getCustomer() == null;
+        if (getCustomer() != null ? !getCustomer().equals(that.getCustomer()) : that.getCustomer() != null)
+            return false;
+        if (shippingAddress != null ? !shippingAddress.equals(that.shippingAddress) : that.shippingAddress != null)
+            return false;
+        return billToAddress != null ? billToAddress.equals(that.billToAddress) : that.billToAddress == null;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
         result = 31 * result + (getCustomer() != null ? getCustomer().hashCode() : 0);
+        result = 31 * result + (shippingAddress != null ? shippingAddress.hashCode() : 0);
+        result = 31 * result + (billToAddress != null ? billToAddress.hashCode() : 0);
         return result;
     }
 }
