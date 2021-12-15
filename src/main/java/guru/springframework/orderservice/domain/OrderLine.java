@@ -2,7 +2,6 @@ package guru.springframework.orderservice.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Created by jt on 12/14/21.
