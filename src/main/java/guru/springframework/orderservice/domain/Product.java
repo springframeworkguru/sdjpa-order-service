@@ -1,8 +1,7 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by jt on 12/11/21.
@@ -13,6 +12,12 @@ public class Product extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
+
+    @ManyToMany
+    @JoinTable(name = "product_category",
+        joinColumns = @JoinColumn(name = "product_id"),
+        inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
     public String getDescription() {
         return description;
@@ -28,6 +33,14 @@ public class Product extends BaseEntity {
 
     public void setProductStatus(ProductStatus productStatus) {
         this.productStatus = productStatus;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     @Override
