@@ -43,7 +43,11 @@ import javax.persistence.*;
 public class OrderHeader extends BaseEntity{
 
     private String customer;
+
+    @Embedded
     private Address shippingAddress;
+
+    @Embedded
     private Address billToAddress;
 
     public String getCustomer() {
