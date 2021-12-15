@@ -44,7 +44,11 @@ import java.util.Set;
 public class OrderHeader extends BaseEntity {
 
     private String customer;
+
+    @Embedded
     private Address shippingAddress;
+
+    @Embedded
     private Address billToAddress;
 
     @Enumerated(EnumType.STRING)
