@@ -44,7 +44,8 @@ import java.util.Set;
 })
 public class OrderHeader extends BaseEntity {
 
-    private String customer;
+    @ManyToOne
+    private Customer customer;
 
     @Embedded
     private Address shippingAddress;
@@ -67,11 +68,11 @@ public class OrderHeader extends BaseEntity {
         orderLine.setOrderHeader(this);
     }
 
-    public String getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
