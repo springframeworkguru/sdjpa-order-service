@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -92,4 +93,32 @@ class OrderHeaderRepositoryTest {
         assertNotNull(fetchedOrder.getCreatedDate());
         assertNotNull(fetchedOrder.getLastModifiedDate());
     }
+
+    @Test
+    void testDeleteCascade() {
+
+        OrderHeader orderHeader = new OrderHeader();
+        Customer customer = new Customer();
+        customer.setCustomerName("new Customer");
+        orderHeader.setCustomer(customerRepository.save(customer));
+
+        OrderLine orderLine = new OrderLine();
+        orderLine.setQuantityOrdered(3);
+        orderLine.setProduct(product);
+
+        orderHeader.addOrderLine(orderLine);
+        OrderHeader savedOrder = orderHeaderRepository.saveAndFlush(orderHeader);
+
+        System.out.println("order saved and flushed");
+
+        orderHeaderRepository.deleteById(savedOrder.getId());
+        orderHeaderRepository.flush();
+
+        assertThrows(EntityNotFoundException.class, () -> {
+            OrderHeader fetchedOrder = orderHeaderRepository.getById(savedOrder.getId());
+
+            assertNull(fetchedOrder);
+        });
+    }
+
 }
