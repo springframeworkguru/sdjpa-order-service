@@ -38,7 +38,7 @@ public class DataLoadTest {
     @Autowired
     ProductRepository productRepository;
 
-    @Disabled
+   // @Disabled
     @Rollback(value = false)
     @Test
     void testDataLoader() {
@@ -65,7 +65,8 @@ public class DataLoadTest {
             OrderLine orderLine = new OrderLine();
             orderLine.setProduct(product);
             orderLine.setQuantityOrdered(random.nextInt(20));
-            orderHeader.getOrderLines().add(orderLine);
+            //orderHeader.getOrderLines().add(orderLine);
+            orderHeader.addOrderLine(orderLine);
         });
 
         return orderHeaderRepository.save(orderHeader);
