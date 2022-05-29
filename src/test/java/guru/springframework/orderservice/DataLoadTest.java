@@ -38,7 +38,7 @@ public class DataLoadTest {
     @Autowired
     ProductRepository productRepository;
 
-   // @Disabled
+    @Disabled
     @Rollback(value = false)
     @Test
     void testDataLoader() {
