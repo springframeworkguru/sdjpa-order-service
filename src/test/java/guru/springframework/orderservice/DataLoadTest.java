@@ -41,6 +41,26 @@ public class DataLoadTest {
     @Autowired
     ProductRepository productRepository;
 
+    /**
+     * From MySQL Workbench (or other client, run the following SQL statment, then test below.) Once
+     * you commit, the test will complete. If test completes immediately, check autocommit settings in client.
+     *
+     *  {@code SELECT * FROM orderservice.order_header where id = 1 for update; }
+     */
+    @Test
+    void testDBLock() {
+        Long id = 1l;
+
+        OrderHeader orderHeader = orderHeaderRepository.findById(id).get();
+
+        Address billTo = new Address();
+        billTo.setAddress("Bill me");
+        orderHeader.setBillToAddress(billTo);
+        orderHeaderRepository.saveAndFlush(orderHeader);
+
+        System.out.println("I updated the order");
+    }
+
     @Test
     void testN_PlusOneProblem() {
 
