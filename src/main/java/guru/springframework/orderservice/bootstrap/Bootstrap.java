@@ -1,6 +1,8 @@
 package guru.springframework.orderservice.bootstrap;
 
+import guru.springframework.orderservice.domain.Customer;
 import guru.springframework.orderservice.domain.OrderHeader;
+import guru.springframework.orderservice.repositories.CustomerRepository;
 import guru.springframework.orderservice.repositories.OrderHeaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +20,9 @@ public class Bootstrap implements CommandLineRunner {
 
     @Autowired
     BootstrapOrderService bootstrapOrderService;
+
+    @Autowired
+    CustomerRepository customerRepository;
 //    @Transactional
 //    public void readOrderData(){
 //        OrderHeader orderHeader = orderHeaderRepository.findById(1L).get();
@@ -34,5 +39,19 @@ public class Bootstrap implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         bootstrapOrderService.readOrderData();
+
+        Customer customer = new Customer();
+        customer.setCustomerName("Testing Version");
+        Customer savedCustomer = customerRepository.save(customer);
+
+        System.out.println("Version is: " + savedCustomer.getVersion());
+
+        customerRepository.deleteById(savedCustomer.getId());
     }
 }
+
+
+
+
+
+

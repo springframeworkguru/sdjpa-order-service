@@ -5,6 +5,7 @@ import org.hibernate.criterion.Order;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -23,6 +24,8 @@ public class Customer extends BaseEntity {
     private String phone;
     private String email;
 
+    @Version
+    private Integer version;
     @OneToMany(mappedBy = "customer")
     private Set<OrderHeader> orders = new LinkedHashSet<>();
 
@@ -64,5 +67,13 @@ public class Customer extends BaseEntity {
 
     public void setOrders(Set<OrderHeader> orders) {
         this.orders = orders;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
