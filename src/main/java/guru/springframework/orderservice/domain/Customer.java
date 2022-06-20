@@ -2,10 +2,7 @@ package guru.springframework.orderservice.domain;
 
 import org.hibernate.criterion.Order;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
