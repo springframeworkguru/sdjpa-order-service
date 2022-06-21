@@ -19,6 +19,16 @@ public class Product extends BaseEntity {
         inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories;
 
+    private Integer quantityOnHand = 0;
+
+    public Integer getQuantityOnHand() {
+        return quantityOnHand;
+    }
+
+    public void setQuantityOnHand(Integer quantityOnHand) {
+        this.quantityOnHand = quantityOnHand;
+    }
+
     public String getDescription() {
         return description;
     }
