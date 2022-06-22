@@ -3,17 +3,23 @@ package guru.springframework.orderservice.domain;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 /**
  * Created by jt on 12/11/21.
  */
 @Embeddable
 public class Address {
+    @Size(max = 30)
     private String address;
 
-    @Length(max = 30)
+    @Size(max = 30)
     private String city;
+
+    @Size(max = 30)
     private String state;
+
+    @Size(max = 30)
     private String zipCode;
 
     public String getAddress() {
