@@ -1,8 +1,8 @@
 package guru.springframework.orderservice.domain;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.context.annotation.ComponentScan;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;

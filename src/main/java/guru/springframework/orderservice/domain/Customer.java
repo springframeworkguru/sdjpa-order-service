@@ -1,6 +1,10 @@
 package guru.springframework.orderservice.domain;
 
-import org.hibernate.criterion.Order;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
+import jakarta.validation.Valid;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.*;

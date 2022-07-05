@@ -1,8 +1,9 @@
 package guru.springframework.orderservice.domain;
 
+import jakarta.persistence.Embeddable;
+import org.hibernate.validator.constraints.Length;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.Embeddable;
-
 
 /**
  * Created by jt on 12/11/21.
