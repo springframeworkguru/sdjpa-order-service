@@ -2,9 +2,8 @@ package guru.springframework.orderservice.domain;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.context.annotation.ComponentScan;
-
-import javax.persistence.*;
 import java.sql.Timestamp;
+import jakarta.persistence.*;
 
 /**
  * Created by jt on 12/11/21.
