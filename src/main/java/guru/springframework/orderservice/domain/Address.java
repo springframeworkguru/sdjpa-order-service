@@ -1,6 +1,6 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 /**
  * Created by jt on 12/11/21.
