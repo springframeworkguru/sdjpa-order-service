@@ -2,7 +2,7 @@ package guru.springframework.orderservice.domain;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 /**
  * Created by jt on 12/11/21.
