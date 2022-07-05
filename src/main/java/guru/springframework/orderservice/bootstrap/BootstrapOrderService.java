@@ -16,7 +16,7 @@ public class BootstrapOrderService {
 
     @Transactional
     public void readOrderData(){
-        OrderHeader orderHeader = orderHeaderRepository.findById(1L).get();
+        OrderHeader orderHeader = orderHeaderRepository.findById(55L).get();
 
         orderHeader.getOrderLines().forEach(ol -> {
             System.out.println(ol.getProduct().getDescription());
