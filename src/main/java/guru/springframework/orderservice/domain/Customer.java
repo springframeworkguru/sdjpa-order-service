@@ -1,7 +1,6 @@
 package guru.springframework.orderservice.domain;
 
 import jakarta.persistence.Version;
-import java.util.HashSet;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
