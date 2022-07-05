@@ -2,7 +2,7 @@ package guru.springframework.orderservice.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class OrderHeaderTest {
 
