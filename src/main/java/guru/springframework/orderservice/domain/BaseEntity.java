@@ -1,9 +1,6 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 /**
  * Created by jt on 12/11/21.
