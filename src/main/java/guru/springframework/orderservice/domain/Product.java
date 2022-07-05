@@ -1,7 +1,9 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.*;
 import java.util.Set;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 /**
  * Created by jt on 12/11/21.
