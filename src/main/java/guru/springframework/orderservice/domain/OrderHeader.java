@@ -3,9 +3,9 @@ package guru.springframework.orderservice.domain;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import jakarta.persistence.*;
 
 /**
  * Created by jt on 12/5/21.
