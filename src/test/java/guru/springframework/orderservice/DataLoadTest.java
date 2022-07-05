@@ -49,7 +49,7 @@ public class DataLoadTest {
      */
     @Test
     void testDBLock() {
-        Long id = 1l;
+        Long id = 55l;
 
         OrderHeader orderHeader = orderHeaderRepository.findById(id).get();
 
@@ -75,7 +75,7 @@ public class DataLoadTest {
 
     @Test
     void testLazyVsEager() {
-        OrderHeader orderHeader = orderHeaderRepository.getById(5l);
+        OrderHeader orderHeader = orderHeaderRepository.getById(52l);
 
         System.out.println("Order Id is: " + orderHeader.getId());
 
@@ -83,7 +83,7 @@ public class DataLoadTest {
 
     }
 
-   // @Disabled
+    @Disabled
     @Rollback(value = false)
     @Test
     void testDataLoader() {
