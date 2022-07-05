@@ -63,7 +63,7 @@ public class DataLoadTest {
 
     }
 
-   // @Disabled
+    @Disabled
     @Rollback(value = false)
     @Test
     void testDataLoader() {
