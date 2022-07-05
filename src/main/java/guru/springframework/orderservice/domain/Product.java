@@ -1,7 +1,8 @@
 package guru.springframework.orderservice.domain;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import jakarta.persistence.*;
 
 /**
  * Created by jt on 12/11/21.

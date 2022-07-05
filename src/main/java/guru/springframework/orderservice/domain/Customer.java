@@ -2,8 +2,10 @@ package guru.springframework.orderservice.domain;
 
 import org.hibernate.criterion.Order;
 
-import javax.persistence.*;
-import java.util.HashSet;
+import jakarta.persistence.Version;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
