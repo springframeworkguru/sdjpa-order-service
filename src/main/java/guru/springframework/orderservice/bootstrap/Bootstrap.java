@@ -1,7 +1,6 @@
 package guru.springframework.orderservice.bootstrap;
 
 import guru.springframework.orderservice.domain.Customer;
-import guru.springframework.orderservice.domain.OrderHeader;
 import guru.springframework.orderservice.domain.Product;
 import guru.springframework.orderservice.domain.ProductStatus;
 import guru.springframework.orderservice.repositories.CustomerRepository;
@@ -10,7 +9,6 @@ import guru.springframework.orderservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jt on 6/8/22.

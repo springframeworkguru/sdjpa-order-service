@@ -1,8 +1,8 @@
 package guru.springframework.orderservice.domain;
 
-import jakarta.persistence.Version;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Version;
 
 /**
  * Created by jt on 12/14/21.
