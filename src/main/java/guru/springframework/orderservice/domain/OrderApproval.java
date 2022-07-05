@@ -1,6 +1,8 @@
 package guru.springframework.orderservice.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 /**
  * Created by jt on 5/21/22.
