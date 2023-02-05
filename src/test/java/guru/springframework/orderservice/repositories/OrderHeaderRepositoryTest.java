@@ -2,6 +2,7 @@ package guru.springframework.orderservice.repositories;
 
 import guru.springframework.orderservice.domain.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -77,6 +78,48 @@ class OrderHeaderRepositoryTest {
         OrderHeader orderHeader = new OrderHeader();
         Customer customer = new Customer();
         customer.setCustomerName("New Customer");
+        customer.setPhone("012-345-6789");
+        customer.setEmail("ken@home.com");
+
+        Address address = new Address();
+        address.setCity("Amherst");
+        address.setAddress("1313 Mockingbird Ln");
+        address.setState("VA");
+        address.setZipCode("24521");
+
+        customer.setAddress(address);
+        Customer savedCustomer = customerRepository.save(customer);
+
+        orderHeader.setCustomer(savedCustomer);
+        OrderHeader savedOrder = orderHeaderRepository.save(orderHeader);
+
+        assertNotNull(savedOrder);
+        assertNotNull(savedOrder.getId());
+
+        OrderHeader fetchedOrder = orderHeaderRepository.getById(savedOrder.getId());
+
+        assertNotNull(fetchedOrder);
+        assertNotNull(fetchedOrder.getId());
+        assertNotNull(fetchedOrder.getCreatedDate());
+        assertNotNull(fetchedOrder.getLastModifiedDate());
+    }
+
+    @Disabled
+    @Test
+    void testSaveOrderFailsValidation() {
+        OrderHeader orderHeader = new OrderHeader();
+        Customer customer = new Customer();
+        customer.setCustomerName("New Customer012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        customer.setPhone("012345678012345678901234567890123456789012345678901234567890123456789");
+        customer.setEmail("ken#home.com");
+
+        Address address = new Address();
+        address.setCity("012345678901234567890123456789012345678901234567890123456789");
+        address.setAddress("012345678901234567890123456789012345678901234567890123456789");
+        address.setState("012345678901234567890123456789012345678901234567890123456789");
+        address.setZipCode("012345678901234567890123456789012345678901234567890123456789");
+
+        customer.setAddress(address);
         Customer savedCustomer = customerRepository.save(customer);
 
         orderHeader.setCustomer(savedCustomer);
